@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XE Currency Converter & Live Exchange Rates</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 1. Top Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="#" class="logo">xe</a>
+        <nav class="nav-links">
+          <a href="#" class="nav-item active">Personal</a>
+          <a href="#" class="nav-item">Business</a>
+          <a href="#" class="nav-item">Platform</a>
+        </nav>
+      </div>
+      <div class="nav-right">
+        <span class="lang-selector">🇺🇸 EN</span>
+        <a href="#" class="btn-login">Login</a>
+        <a href="#" class="btn-register">Register</a>
+        <a href="#" class="btn-help">Help</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. Hero Section with Converter / Charts Card -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 id="hero-title">Exchange Rate and Currency Converter Tool</h1>
+      <p id="hero-subtitle">Check live foreign currency exchange rates</p>
+
+      <div class="main-card">
+        <!-- Card Tabs -->
+        <div class="card-tabs">
+          <button type="button" class="tab-btn active" data-tab="converter">
+            <span class="tab-icon">💱</span> Currency converter
+          </button>
+          <button type="button" class="tab-btn" data-tab="charts">
+            <span class="tab-icon">📊</span> Currency charts
+          </button>
+          <button type="button" class="tab-btn" data-tab="alerts">
+            <span class="tab-icon">🔔</span> Get rate alerts
+          </button>
+          <button type="button" class="tab-btn" data-tab="send">
+            <span class="tab-icon">✈️</span> Send money
+          </button>
+        </div>
+
+        <!-- Converter Form View -->
+        <div id="tab-converter-view" class="tab-view active">
+          <div class="converter-inputs-grid">
+            <!-- From Section -->
+            <div class="input-block">
+              <label for="amount-input">From</label>
+              <div class="input-inner">
+                <span class="currency-symbol" id="base-symbol">$</span>
+                <input type="number" id="amount-input" value="1.00" min="0" step="any">
+                <div class="custom-select-wrapper">
+                  <select id="from-currency">
+                    <option value="USD" selected>🇺🇸 USD - US Dollar</option>
+                    <option value="EUR">🇪🇺 EUR - Euro</option>
+                    <option value="GBP">🇬🇧 GBP - British Pound</option>
+                    <option value="INR">🇮🇳 INR - Indian Rupee</option>
+                    <option value="JPY">🇯🇵 JPY - Japanese Yen</option>
+                    <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Swap Button -->
+            <button type="button" id="swap-currencies-btn" class="swap-circle" title="Swap Currencies">
+              ⇄
+            </button>
+
+            <!-- To Section -->
+            <div class="input-block">
+              <label>To</label>
+              <div class="input-inner">
+                <span class="currency-symbol" id="target-symbol">€</span>
+                <input type="text" id="converted-output" value="0.89" readonly>
+                <div class="custom-select-wrapper">
+                  <select id="to-currency">
+                    <option value="EUR" selected>🇪🇺 EUR - Euro</option>
+                    <option value="USD">🇺🇸 USD - US Dollar</option>
+                    <option value="GBP">🇬🇧 GBP - British Pound</option>
+                    <option value="INR">🇮🇳 INR - Indian Rupee</option>
+                    <option value="JPY">🇯🇵 JPY - Japanese Yen</option>
+                    <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Conversion Rate Result Footer inside Card -->
+          <div class="conversion-footer">
+            <div class="rate-info">
+              <h3 id="headline-rate">1.00 USD = 0.890462 EUR</h3>
+              <p class="sub-rate-info" id="timestamp-info">Mid-market rate • Live data via Java Backend</p>
+            </div>
+            <div class="action-buttons">
+              <button type="button" class="btn-primary" id="btn-convert">Convert Now</button>
+              <button type="button" class="btn-secondary" id="btn-track">Track exchange rates</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="disclaimer">
+          <small>ⓘ We use the mid-market rate for our Converter. This is for informational purposes only.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Historical Chart Section -->
+  <section class="section-container chart-section">
+    <div class="chart-header">
+      <div>
+        <h2 id="chart-title">USD to EUR Chart <span class="badge-positive">+3.69% (1Y)</span></h2>
+        <p class="chart-subtitle" id="chart-subtitle">US Dollar to Euro</p>
+      </div>
+      <div class="chart-actions">
+        <span class="live-dot-text"><span class="dot"></span> 1 USD = <strong id="chart-live-rate">0.890474 EUR</strong></span>
+        <button class="btn-secondary-sm">Track currency</button>
+        <button class="btn-primary-sm">View transfer quote</button>
+      </div>
+    </div>
+
+    <!-- Timeframe Filters -->
+    <div class="timeframe-selector">
+      <button class="timeframe-btn">12H</button>
+      <button class="timeframe-btn">1D</button>
+      <button class="timeframe-btn">1W</button>
+      <button class="timeframe-btn">1M</button>
+      <button class="timeframe-btn active">1Y</button>
+      <button class="timeframe-btn">2Y</button>
+      <button class="timeframe-btn">5Y</button>
+      <button class="timeframe-btn">10Y</button>
+    </div>
+
+    <!-- Chart Visualization using SVG -->
+    <div class="chart-canvas-wrapper">
+      <svg class="chart-svg" viewBox="0 0 1000 320" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2563eb" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#2563eb" stop-opacity="0.0"/>
+          </linearGradient>
+        </defs>
+        <!-- Background grid lines -->
+        <line x1="50" y1="40" x2="980" y2="40" stroke="#f1f5f9" stroke-width="1"/>
+        <line x1="50" y1="110" x2="980" y2="110" stroke="#f1f5f9" stroke-width="1"/>
+        <line x1="50" y1="180" x2="980" y2="180" stroke="#f1f5f9" stroke-width="1"/>
+        <line x1="50" y1="250" x2="980" y2="250" stroke="#f1f5f9" stroke-width="1"/>
+
+        <!-- Area fill -->
+        <path d="M 60 210 Q 120 180 180 200 T 300 240 T 420 190 T 540 180 T 660 160 T 780 140 T 900 80 L 960 50 L 960 280 L 60 280 Z" fill="url(#chartGradient)"/>
+        
+        <!-- Main Line -->
+        <path d="M 60 210 Q 120 180 180 200 T 300 240 T 420 190 T 540 180 T 660 160 T 780 140 T 900 80 L 960 50" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round"/>
+
+        <!-- Highlight Point -->
+        <circle cx="820" cy="130" r="5" fill="#2563eb" stroke="#ffffff" stroke-width="2"/>
+      </svg>
+      <div class="chart-tooltip" style="left: 77%; top: 38%;">
+        <strong>0.888644</strong>
+        <span>Live Quote Snapshot</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Live Exchange Rates Table with Sparklines -->
+  <section class="section-container">
+    <div class="section-title-wrap">
+      <h2>Live exchange rates</h2>
+      <p>Compare 100+ currencies in real time & find the right moment to transfer funds</p>
+    </div>
+
+    <div class="rates-table-card">
+      <div class="table-top-controls">
+        <label class="toggle-switch">
+          <span>Inverse</span>
+          <input type="checkbox" id="inverse-toggle">
+          <span class="slider"></span>
+        </label>
+        <div class="table-header-titles">
+          <span>Amount</span>
+          <span>Change (24h)</span>
+          <span>(24h Trend)</span>
+          <button class="btn-edit-table">✏ Edit</button>
+        </div>
+      </div>
+
+      <!-- Base Currency Selection Header -->
+      <div class="base-currency-bar">
+        <div class="base-left">
+          <span class="flag">🇺🇸</span>
+          <strong id="table-base-name">US Dollar</strong>
+          <span class="arrow-down">▾</span>
+        </div>
+        <div class="base-amount" id="table-base-amount">1</div>
+      </div>
+
+      <!-- Dynamic Rate Rows -->
+      <div class="rates-list" id="rates-list-container">
+        <!-- JavaScript se row generate hogi -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Market Rates & Central Bank Rates Section -->
+  <section class="section-container grid-two-columns">
+    <!-- Live Currency Rates -->
+    <div class="info-card">
+      <h3 class="info-card-title">Live Currency Rates</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Currency</th>
+            <th>Rate</th>
+            <th>Change</th>
+          </tr>
+        </thead>
+        <tbody id="market-rates-body">
+          <tr>
+            <td><a href="#" class="pair-link">EUR / USD</a></td>
+            <td>1.12299</td>
+            <td class="text-green">▲</td>
+          </tr>
+          <tr>
+            <td><a href="#" class="pair-link">GBP / EUR</a></td>
+            <td>1.18711</td>
+            <td class="text-red">▼</td>
+          </tr>
+          <tr>
+            <td><a href="#" class="pair-link">USD / JPY</a></td>
+            <td>158.252</td>
+            <td class="text-green">▲</td>
+          </tr>
+          <tr>
+            <td><a href="#" class="pair-link">GBP / USD</a></td>
+            <td>1.33311</td>
+            <td class="text-red">▼</td>
+          </tr>
+          <tr>
+            <td><a href="#" class="pair-link">USD / CHF</a></td>
+            <td>0.825007</td>
+            <td class="text-green">▲</td>
+          </tr>
+          <tr>
+            <td><a href="#" class="pair-link">AUD / USD</a></td>
+            <td>0.698300</td>
+            <td class="text-green">▲</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Central Bank Rates -->
+    <div class="info-card">
+      <h3 class="info-card-title">Central Bank Rates</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Currency</th>
+            <th class="text-right">Interest Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>JPY</strong></td>
+            <td class="text-right">0.75%</td>
+          </tr>
+          <tr>
+            <td><strong>CHF</strong></td>
+            <td class="text-right">0.00%</td>
+          </tr>
+          <tr>
+            <td><strong>EUR</strong></td>
+            <td class="text-right">4.25%</td>
+          </tr>
+          <tr>
+            <td><strong>USD</strong></td>
+            <td class="text-right">3.75%</td>
+          </tr>
+          <tr>
+            <td><strong>CAD</strong></td>
+            <td class="text-right">2.25%</td>
+          </tr>
+          <tr>
+            <td><strong>AUD</strong></td>
+            <td class="text-right">3.60%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- External JS Script Link -->
+  <script src="app.js"></script>
+</body>
+</html>
