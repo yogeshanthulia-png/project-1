@@ -1,6 +1,6 @@
 :root {
-  --primary-blue: #002244;
-  --accent-blue: #0c20d6;
+  --sage: #2034e8;
+  --accent-blue: #60658d;
   --bright-blue: #2563eb;
   --bg-slate: #f8fafc;
   --card-white: #ffffff;
@@ -20,14 +20,14 @@
 }
 
 body {
-  background-color: var(--bg-slate);
+  background-color: #728E6D;
   color: var(--text-dark);
   line-height: 1.5;
 }
 
 /* 1. Navbar */
 .navbar {
-  background-color: #031442;
+  background-color: #15370D;
   color: #fff;
   padding: 16px 32px;
 }
@@ -40,7 +40,8 @@ body {
   align-items: center;
 }
 
-.nav-left, .nav-right {
+.nav-left,
+.nav-right {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -51,7 +52,9 @@ body {
   font-weight: 800;
   color: #ffffff;
   text-decoration: none;
-  background: #004ee0;
+  background:
+    /*#004ee0*/
+    #E5CD82;
   padding: 2px 14px;
   border-radius: 20px;
 }
@@ -66,7 +69,8 @@ body {
   transition: 0.2s;
 }
 
-.nav-links a:hover, .nav-links a.active {
+.nav-links a:hover,
+.nav-links a.active {
   color: #fff;
   background: rgba(255, 255, 255, 0.1);
 }
@@ -78,7 +82,9 @@ body {
 }
 
 .btn-register {
-  background: #0052ff;
+  background:
+    /*#0052ff*/
+    #E5CD82;
   padding: 8px 18px;
   border-radius: 20px;
   font-weight: 600;
@@ -92,13 +98,13 @@ body {
 
 /* 2. Hero Section */
 .hero-section {
-  background: linear-gradient(180deg, #031442 0%, #08298a 60%, #ffffff 60%);
+  background: linear-gradient(180deg, #031442 -50%, #15370D 60%, #6A795D 90%);
   padding: 40px 20px 20px;
   text-align: center;
 }
 
 .hero-content h1 {
-  color: #ffffff;
+  color: #FFF2B4;
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 8px;
@@ -114,7 +120,7 @@ body {
 .main-card {
   max-width: 1040px;
   margin: 0 auto;
-  background: var(--card-white);
+  background: #B2BD7E;
   border-radius: 20px;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
   padding: 24px 32px;
@@ -162,7 +168,7 @@ body {
   border: 1.5px solid var(--border-light);
   border-radius: 12px;
   padding: 10px 16px;
-  background: #ffffff;
+  background: #15370D;
 }
 
 .input-block label {
@@ -182,7 +188,23 @@ body {
 .currency-symbol {
   font-size: 1.3rem;
   font-weight: 600;
-  color: var(--text-dark);
+  color: gold;
+}
+
+#amount-input {
+  background-color: #B8CFB3;
+}
+
+#from-currency {
+  background-color: #B8CFB3;
+}
+
+#converted-output {
+  background-color: #B8CFB3;
+}
+
+#to-currency {
+  background-color: #B8CFB3;
 }
 
 .input-inner input {
@@ -242,7 +264,7 @@ body {
 .rate-info h3 {
   font-size: 1.4rem;
   font-weight: 800;
-  color: #031442;
+  color: #15370D;
 }
 
 .sub-rate-info {
@@ -256,7 +278,7 @@ body {
 }
 
 .btn-primary {
-  background: #0052ff;
+  background: #E5CD82;
   color: #fff;
   border: none;
   padding: 12px 24px;
@@ -266,8 +288,8 @@ body {
 }
 
 .btn-secondary {
-  background: #f1f5f9;
-  color: var(--text-dark);
+  background: #15370D;
+  color: #ffffff;
   border: none;
   padding: 12px 20px;
   border-radius: 8px;
@@ -283,6 +305,7 @@ body {
 
 /* 3. Section Containers */
 .section-container {
+  color: #15370D;
   max-width: 1040px;
   margin: 40px auto;
   padding: 0 20px;
@@ -295,22 +318,23 @@ body {
 
 .section-title-wrap h2 {
   font-size: 2rem;
-  color: #0f172a;
+  color: #FFF2B4;
 }
 
 .section-title-wrap p {
-  color: var(--text-muted);
+  color: #d9d7ce;
 }
 
 /* Chart Styles */
 .chart-section {
-  background: var(--card-white);
+  background: #B2BD7E;
   border: 1px solid var(--border-light);
   border-radius: 16px;
   padding: 24px;
 }
 
 .chart-header {
+  background-color: #B2BD7E;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -339,7 +363,7 @@ body {
 }
 
 .btn-primary-sm {
-  background: #0052ff;
+  background: #E5CD82;
   color: #fff;
   border: none;
   padding: 8px 16px;
@@ -349,7 +373,8 @@ body {
 }
 
 .btn-secondary-sm {
-  background: #f1f5f9;
+  background: #15370D;
+  color: white;
   border: none;
   padding: 8px 14px;
   border-radius: 6px;
@@ -375,7 +400,7 @@ body {
 }
 
 .timeframe-btn.active {
-  background: #0052ff;
+  background: #15370D;
   color: #ffffff;
 }
 
@@ -393,9 +418,9 @@ body {
 
 .chart-tooltip {
   position: absolute;
-  background: #ffffff;
+  background: #728E6D;
   border: 1px solid var(--border-light);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 6px 10px;
   border-radius: 6px;
   display: flex;
@@ -405,7 +430,7 @@ body {
 
 /* 4. Live Exchange Rates Table */
 .rates-table-card {
-  background: #ffffff;
+  background: #B2BD7E;
   border: 1px solid var(--border-light);
   border-radius: 16px;
   overflow: hidden;
@@ -428,7 +453,7 @@ body {
 }
 
 .btn-edit-table {
-  background: #f1f5f9;
+  background: #E5CD82;
   border: none;
   padding: 4px 10px;
   border-radius: 6px;
@@ -436,7 +461,7 @@ body {
 }
 
 .base-currency-bar {
-  background: #000839;
+  background: #15370D;
   color: #ffffff;
   padding: 14px 24px;
   display: flex;
@@ -509,7 +534,7 @@ body {
 }
 
 .btn-row-send {
-  background: #0052ff;
+  background: #E5CD82;
   color: #ffffff;
   border: none;
   padding: 8px 16px;
@@ -531,14 +556,14 @@ body {
 }
 
 .info-card {
-  background: #ffffff;
+  background: #B2BD7E;
   border: 1px solid var(--border-light);
   border-radius: 16px;
   padding: 24px;
 }
 
 .info-card-title {
-  color: #031442;
+  color: #15370D;
   font-size: 1.3rem;
   margin-bottom: 16px;
 }
@@ -563,31 +588,45 @@ body {
 }
 
 .pair-link {
-  color: #0052ff;
+  color: #15370D;
   text-decoration: none;
   font-weight: 600;
 }
 
-.text-right { text-align: right; }
-.text-green { color: var(--green); font-weight: bold; }
-.text-red { color: var(--red); font-weight: bold; }
+.text-right {
+  text-align: right;
+}
+
+.text-green {
+  color: var(--green);
+  font-weight: bold;
+}
+
+.text-red {
+  color: var(--red);
+  font-weight: bold;
+}
 
 /* Responsive Media Queries */
 @media (max-width: 860px) {
   .converter-inputs-grid {
     grid-template-columns: 1fr;
   }
+
   .swap-circle {
     margin: 0 auto;
   }
+
   .conversion-footer {
     flex-direction: column;
     gap: 16px;
     align-items: flex-start;
   }
+
   .grid-two-columns {
     grid-template-columns: 1fr;
   }
+
   .rate-row {
     grid-template-columns: 1fr 1fr;
     gap: 12px;
